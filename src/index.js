@@ -1,44 +1,38 @@
-import React ,{useState} from 'react';
+import React,{useState} from 'react';
 import ReactDOM from 'react-dom';
 
 
 const NoteApp = () => {
-  const [notes, setNote] = useState([]);
+  const [notes, setNotes] = useState([])
   const [title, setTitle] = useState('')
-  const [body, setBody] = useState('')
+  const [body, setBody]= useState('')
 
-  const addNote =(e) => {
+  const addNote = (e) => {
     e.preventDefault()
-    setNote([ 
+    setNotes([
       ...notes, {title, body}
-    ])
-    setTitle('')
-    setBody('')
-  }
-  const removeNote = (title) => {
-    setNote(notes.filter((note)=> note.title !== title))
+    ]) 
+    setTitle('');
+    setBody('');
    
+    
+
   }
 
-    return (
-      <div>
-        <h1>Note</h1>
-        <p>{notes.map((note)=> (
-          <div key={note.title}>
-           <h3>{note.title}</h3>
-           <h3>{note.body}</h3>
-           <button onClick={()=>removeNote(note.title)}>x</button>
-          </div>
-        ))}</p>
-        <p>Add Note</p>
-        <form onSubmit={addNote}>
-          <input value={title} onChange={(e)=> setTitle(e.target.value)} />
-          <textarea value={body} onChange={(e)=> setBody(e.target.value)}></textarea>
-          <button>Add note</button>
-        </form>
-      </div>
-    )
+  return (
+    <div>
+      <h1>Note</h1>
+      <p>Add Notes</p>
+      <form onSubmit={addNote}>
+        <input value={title} onChange={(e)=> setTitle(e.target.value)}/>
+        <textarea value={body} onChange={(e)=> setBody(e.target.value)}></textarea>
+        <button>Add note</button>
+      </form>
+      
 
+    
+    </div>
+  )
 }
 
 // const App = (props) => {
