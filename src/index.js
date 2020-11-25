@@ -10,9 +10,10 @@ const NoteApp = () => {
   const addNote =(e) => {
     e.preventDefault()
     setNote([ 
-      ...notes, {title}
+      ...notes, {title, body}
     ])
     setTitle('')
+    setBody('')
   }
   const removeNote = (title) => {
     setNote(notes.filter((note)=> note.title !== title))
@@ -25,13 +26,14 @@ const NoteApp = () => {
         <p>{notes.map((note)=> (
           <div key={note.title}>
            <h3>{note.title}</h3>
+           <h3>{note.body}</h3>
            <button onClick={()=>removeNote(note.title)}>x</button>
           </div>
         ))}</p>
         <p>Add Note</p>
         <form onSubmit={addNote}>
           <input value={title} onChange={(e)=> setTitle(e.target.value)} />
-          <textarea>add text</textarea>
+          <textarea value={body} onChange={(e)=> setBody(e.target.value)}></textarea>
           <button>Add note</button>
         </form>
       </div>
